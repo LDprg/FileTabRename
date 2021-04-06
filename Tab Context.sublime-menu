@@ -1,3 +1,3 @@
 [
-	{ "command": "file_tab_rename", "args": { "group": -1, "index": -1 }, "caption": "Rename File" }
+	{ "command": "file_tab_rename", "args": { "group": -1, "index": -1 }, "caption": "Rename File..." }
 ]

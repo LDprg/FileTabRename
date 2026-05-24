@@ -35,13 +35,13 @@ class FileTabRenameCommand(sublime_plugin.WindowCommand):
             new = os.path.join(branch, leaf)
 
             try:
-                if len(leaf) is 0:
+                if len(leaf) == 0:
                     sublime.error_message("No filename given")
-                    return;
+                    return
 
                 if os.path.exists(new) and old.lower() != new.lower():
                     sublime.error_message(new + " already exists")
-                    return;
+                    return
 
                 os.rename(old, new)
 

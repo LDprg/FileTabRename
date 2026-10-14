@@ -5,6 +5,10 @@ import os.path
 import functools
 
 class FileTabRenameCommand(sublime_plugin.WindowCommand):
+    def is_enabled(self, group, index):
+        views = self.window.views_in_group(group)
+        return 0 <= index < len(views) and views[index].file_name() is not None
+
     def run(self, group, index):
         window = self.window
 
@@ -23,6 +27,7 @@ class FileTabRenameCommand(sublime_plugin.WindowCommand):
 
         if not os.access(filename, os.W_OK):
             sublime.error_message(leaf + " is read-only")
+            return
 
         panel = view.window().show_input_panel("New Name:", leaf, functools.partial(self.on_done, filename, branch, view), None, None)
 
